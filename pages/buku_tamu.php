@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buku Tamu</title>
+    <link rel="stylesheet" href="../css/style.css">
     <style>.error {color: #FF0000;}</style>
 </head>
 <body>
@@ -51,19 +54,28 @@
     }
     ?>
 
-    <h2>Form Buku Tamu</h2>
-    <p><span class="error">* wajib diisi</span></p>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        Nama: <input type="text" name="name" value="<?php echo $name;?>">
-        <span class="error">* <?php echo $nameErr;?></span><br><br>
-
-        Email: <input type="text" name="email" value="<?php echo $email;?>">
-        <span class="error">* <?php echo $emailErr;?></span><br><br>
-
-        Komentar: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
-        <span class="error">* <?php echo $commentErr;?></span><br><br>
-
-        <input type="submit" name="submit" value="Submit">
-    </form>
+    <div class="form-container">
+        <div class="form-box">
+            <h2>Buku Tamu</h2>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                <div class="input-box">
+                    <input type="text" name="name" value="<?php echo $name;?>" required>
+                    <label>Nama</label>
+                    <span class="error"><?php echo $nameErr;?></span>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="email" value="<?php echo $email;?>" required>
+                    <label>Email</label>
+                    <span class="error"><?php echo $emailErr;?></span>
+                </div>
+                <div class="input-box">
+                    <textarea name="comment" rows="5" required><?php echo $comment;?></textarea>
+                    <label>Komentar</label>
+                    <span class="error"><?php echo $commentErr;?></span>
+                </div>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
